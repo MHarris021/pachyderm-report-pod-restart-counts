@@ -1,0 +1,70 @@
+Name:         console-5c559856c6-vt4dd
+Namespace:    default
+Priority:     0
+Node:         gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194
+Start Time:   Wed, 05 Oct 2022 07:16:29 +0000
+Labels:       app=console
+              pod-template-hash=5c559856c6
+              suite=pachyderm
+Annotations:  checksum/helm-values: 2004251ce2948ece076430fb082ed89dd6a57d921dc3a43793559830e91ed8b1
+              seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:       Running
+IP:           10.8.2.29
+IPs:
+  IP:           10.8.2.29
+Controlled By:  ReplicaSet/console-5c559856c6
+Containers:
+  console:
+    Container ID:   containerd://60e9cc1c8e3bfd724d904361ab989fedb0f92fa3cb9a93ada10c47de5d0f5d89
+    Image:          pachyderm/haberdashery:2.3.4-1
+    Image ID:       docker.io/pachyderm/haberdashery@sha256:78f8d4283dc4a431db3e59c4ea4b225e5305dfb3bb20b8a960ee49950a294c38
+    Port:           4000/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Wed, 05 Oct 2022 07:16:30 +0000
+    Ready:          True
+    Restart Count:  0
+    Liveness:       http-get http://:console-http/ delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:      http-get http://:console-http/ delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      REACT_APP_RUNTIME_SUBSCRIPTIONS_PREFIX:  :4000/graphql
+      ISSUER_URI:                              http://pachd:30658
+      REACT_APP_RUNTIME_ISSUER_URI:            http://localhost:30658
+      REACT_APP_RUNTIME_DISABLE_TELEMETRY:     false
+      OAUTH_REDIRECT_URI:                      http://localhost:4000/oauth/callback/?inline=true
+      OAUTH_CLIENT_ID:                         console
+      GRAPHQL_PORT:                            4000
+      OAUTH_PACHD_CLIENT_ID:                   pachd
+      PACHD_ADDRESS:                           pachd-peer.default.svc.cluster.local:30653
+      OAUTH_CLIENT_SECRET:                     <set to the key 'OAUTH_CLIENT_SECRET' in secret 'pachyderm-console-secret'>  Optional: false
+      UPGRADE_NO_OP:                           hegOJnaOUwNBYVtqntXefXGOoPTLYebG
+    Mounts:
+      /home/ from home (rw)
+      /tmp/ from tmp (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sxmnl (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  home:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-sxmnl:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

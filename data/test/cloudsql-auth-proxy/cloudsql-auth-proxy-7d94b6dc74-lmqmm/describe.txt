@@ -1,0 +1,52 @@
+Name:         cloudsql-auth-proxy-7d94b6dc74-lmqmm
+Namespace:    default
+Priority:     0
+Node:         gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194
+Start Time:   Wed, 05 Oct 2022 06:24:37 +0000
+Labels:       app=cloudsql-auth-proxy
+              pod-template-hash=7d94b6dc74
+              suite=pachyderm
+Annotations:  seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:       Running
+IP:           10.8.2.24
+IPs:
+  IP:           10.8.2.24
+Controlled By:  ReplicaSet/cloudsql-auth-proxy-7d94b6dc74
+Containers:
+  cloud-sql-proxy:
+    Container ID:  containerd://81d9b60ba9707890e468c4b3b4122f5509ff969b3470a7a76dd99dfd22e0ad75
+    Image:         gcr.io/cloudsql-docker/gce-proxy:1.23.0
+    Image ID:      gcr.io/cloudsql-docker/gce-proxy@sha256:c360979cfcd7cd4e0d0bca6331a8e52a502d6b5e930a3c0987829d6393660cbf
+    Port:          5432/TCP
+    Host Port:     0/TCP
+    Command:
+      /cloud_sql_proxy
+      -instances=helm-162401:us-west1:helm-pachyderm=tcp:0.0.0.0:5432
+    State:          Running
+      Started:      Wed, 05 Oct 2022 06:24:39 +0000
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:        500m
+      memory:     500M
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8smvl (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-8smvl:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

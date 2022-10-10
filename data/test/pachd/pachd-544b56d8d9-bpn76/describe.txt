@@ -1,0 +1,108 @@
+Name:         pachd-544b56d8d9-bpn76
+Namespace:    default
+Priority:     0
+Node:         gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194
+Start Time:   Thu, 29 Sep 2022 22:48:54 +0000
+Labels:       app=pachd
+              pod-template-hash=544b56d8d9
+              suite=pachyderm
+Annotations:  checksum/helm-values: 2b7b40f69d095fa65c45e6fbf6a60bbfaee6dcc9e6d338b78533930b2d893e36
+              checksum/storage-secret: 69c520495c7cdb67647c6f847d79296a26f138b297328a5c93636298e79b859f
+              seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:       Running
+IP:           10.8.2.3
+IPs:
+  IP:           10.8.2.3
+Controlled By:  ReplicaSet/pachd-544b56d8d9
+Containers:
+  pachd:
+    Container ID:  containerd://7830583cb369e89962b1a07a1081155a2b863c44d215d249b231ff678c98ed06
+    Image:         pachyderm/pachd:2.3.4
+    Image ID:      docker.io/pachyderm/pachd@sha256:903959bd83a77a346063be5ce9cc1ebb894b554a69f8872916c4397c495edf15
+    Ports:         1600/TCP, 1650/TCP, 1653/TCP, 1657/TCP, 1658/TCP, 1656/TCP
+    Host Ports:    0/TCP, 0/TCP, 0/TCP, 0/TCP, 0/TCP, 0/TCP
+    Command:
+      /pachd
+    Args:
+      --mode
+      $(MODE)
+    State:          Running
+      Started:      Thu, 29 Sep 2022 22:49:09 +0000
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      memory:   16G
+    Liveness:   exec [/pachd --readiness] delay=0s timeout=30s period=10s #success=1 #failure=10
+    Readiness:  exec [/pachd --readiness] delay=0s timeout=1s period=10s #success=1 #failure=3
+    Startup:    exec [/pachd --readiness] delay=0s timeout=30s period=10s #success=1 #failure=10
+    Environment Variables from:
+      pachyderm-storage-secret        Secret     Optional: false
+      pachyderm-deployment-id-secret  Secret     Optional: false
+      pachd-config                    ConfigMap  Optional: true
+    Environment:
+      POSTGRES_HOST:                       cloudsql-auth-proxy.default.svc.cluster.local.
+      POSTGRES_PORT:                       5432
+      POSTGRES_USER:                       postgres
+      POSTGRES_DATABASE:                   pachyderm
+      POSTGRES_PASSWORD:                   <set to the key 'postgresql-password' in secret 'postgres'>  Optional: false
+      PG_BOUNCER_HOST:                     pg-bouncer
+      PG_BOUNCER_PORT:                     5432
+      LOKI_LOGGING:                        true
+      LOKI_SERVICE_HOST_VAR:               PACHYDERM_LOKI_SERVICE_HOST
+      LOKI_SERVICE_PORT_VAR:               PACHYDERM_LOKI_SERVICE_PORT
+      PACH_ROOT:                           /pach
+      ETCD_PREFIX:                         
+      STORAGE_BACKEND:                     GOOGLE
+      WORKER_IMAGE:                        pachyderm/worker:2.3.4
+      WORKER_SIDECAR_IMAGE:                pachyderm/pachd:2.3.4
+      WORKER_IMAGE_PULL_POLICY:            IfNotPresent
+      WORKER_SERVICE_ACCOUNT:              pachyderm-worker
+      METRICS:                             true
+      LOG_FORMAT:                          json
+      LOG_LEVEL:                           info
+      PACH_NAMESPACE:                      default (v1:metadata.namespace)
+      REQUIRE_CRITICAL_SERVERS_ONLY:       false
+      PACHD_POD_NAME:                      pachd-544b56d8d9-bpn76 (v1:metadata.name)
+      PPS_WORKER_GRPC_PORT:                1080
+      STORAGE_UPLOAD_CONCURRENCY_LIMIT:    100
+      STORAGE_PUT_FILE_CONCURRENCY_LIMIT:  100
+      CONSOLE_OAUTH_ID:                    console
+      CONSOLE_OAUTH_SECRET:                <set to the key 'OAUTH_CLIENT_SECRET' in secret 'pachyderm-console-secret'>  Optional: false
+      ENABLE_WORKER_SECURITY_CONTEXTS:     true
+      ENABLE_PREFLIGHT_CHECKS:             true
+      UNPAUSED_MODE:                       full
+    Mounts:
+      /pach from pach-disk (rw)
+      /pachyderm-storage-secret from pachyderm-storage-secret (rw)
+      /tmp from tmp (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-lg7xr (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  pach-disk:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  pachyderm-storage-secret:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  pachyderm-storage-secret
+    Optional:    false
+  kube-api-access-lg7xr:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              cloud.google.com/gke-nodepool=pach-w1b-core
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

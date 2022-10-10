@@ -1,0 +1,56 @@
+Name:         pachyderm-kube-event-tail-cc8765df8-d2krb
+Namespace:    default
+Priority:     0
+Node:         gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194
+Start Time:   Thu, 29 Sep 2022 23:00:45 +0000
+Labels:       app=pachyderm-kube-event-tail
+              pod-template-hash=cc8765df8
+              suite=pachyderm
+Annotations:  seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:       Running
+IP:           10.8.2.7
+IPs:
+  IP:           10.8.2.7
+Controlled By:  ReplicaSet/pachyderm-kube-event-tail-cc8765df8
+Containers:
+  kube-event-tail:
+    Container ID:   containerd://2ef863929da3bb33a36e870adb5c057c5bdb24dfcb32cbb2292edff8f884630a
+    Image:          pachyderm/kube-event-tail:v0.0.6
+    Image ID:       docker.io/pachyderm/kube-event-tail@sha256:083bebf847757d833066861c65f5e9e869367d9772c74b33c00bcea245e1c49f
+    Port:           8081/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Thu, 29 Sep 2022 23:00:51 +0000
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     1
+      memory:  100Mi
+    Requests:
+      cpu:      100m
+      memory:   45Mi
+    Liveness:   http-get http://:debug/healthz delay=0s timeout=1s period=10s #success=1 #failure=3
+    Readiness:  http-get http://:debug/healthz delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      DEBUG_ADDRESS:  0.0.0.0:8081
+      NAMESPACE:      default
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-vsnct (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-vsnct:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>
