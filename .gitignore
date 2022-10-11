@@ -2,3 +2,5 @@
 build
 node_modules
 out
+/out/
+/app/build/

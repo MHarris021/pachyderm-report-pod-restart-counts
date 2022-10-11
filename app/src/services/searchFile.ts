@@ -1,4 +1,4 @@
-import {SearchResult} from "../models/SearchResult";
+import {SearchResult} from "../models";
 import {createReadStream} from "fs";
 import stream from "stream";
 import readline from "readline";

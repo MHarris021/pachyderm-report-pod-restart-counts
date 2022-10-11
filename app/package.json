@@ -2,10 +2,12 @@
     "name": "pachyderm-pod-analysis",
     "version": "1.0.0",
     "dependencies": {
-      "lodash.camelcase": "^4.3.0"
+      "lodash.camelcase": "^4.3.0",
+        "lodash.tonumber": "^4.0.3"
     },
   "devDependencies": {
     "@types/lodash.camelcase": "^4.3.7",
+    "@types/lodash.tonumber": "^4.0.6",
     "typescript": "^4.4.3",
     "@types/node": "^18.8.4",
       "tiny-invariant": "^1.3.1"

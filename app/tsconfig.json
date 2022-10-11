@@ -8,6 +8,12 @@
         "strict": true,
         "esModuleInterop": true,
     },
+    "include": [
+        "src/**/*"
+    ],
+    "paths": {
+        "@models/*": ["src/models/*"],
+    },
     "exclude": [
         "node_modules"
     ]

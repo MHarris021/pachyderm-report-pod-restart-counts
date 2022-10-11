@@ -1,6 +1,8 @@
 import camelCase from "lodash.camelcase";
 import {SearchResult} from "./models/SearchResult";
 import {searchFile} from "./services/searchFile";
+import {analyzePodInfo} from "./services/analyzePodInfo";
+import {analyzePodConditions} from "./services/analyzePodConditions";
 
 const {promises: fsPromises} = require('fs');
 const path = require('path');
@@ -55,10 +57,16 @@ async function main() {
     for (const file of await fsPromises.readdir(inputDir)) {
       const filePath = path.join(inputDir, file);
       if ((await fsPromises.stat(filePath)).isFile()) {
-        const {output, fileName} = await analyzeFile(filePath);
-        const outputFile = path.join(outputDir, fileName+'.json');
+        //const {output, fileName} = await analyzeFile(filePath);
+        const podInfo=await analyzePodInfo(filePath);
+        const outputFile = path.join(outputDir, podInfo.podName+'.json');
         console.log(`Writing ${outputFile}`); // eslint-disable-line no-console
-        console.log(output); // eslint-disable-line no-console
+        console.log(podInfo.toJsonObject()); // eslint-disable-line no-console
+        let output = `{\"podInfo\":${podInfo.toString()},`;
+        const podConditions = await analyzePodConditions(filePath);
+        console.log(podConditions.toJsonObject()); // eslint-disable-line no-console
+        output+=`\"podConditions\":${podConditions.toString()}}`;
+
         await fsPromises.writeFile(outputFile, output);
       }
     }
