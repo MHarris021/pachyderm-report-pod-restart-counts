@@ -14,6 +14,6 @@ fi
 
 # Create the pachyderm pipelines
 
-# Create the pipeline to test datum timeout behavior
-pachctl create pipeline --jsonnet ./pipelines/.jsonnet --arg imageTag="$imageTag"
+# Create the pipeline to report the number of pod restarts for the Pachyderm cluster
+pachctl create pipeline --jsonnet ./pipelines/report-pod-restarts.jsonnet --arg imageTag="$imageTag"
 
