@@ -13,6 +13,7 @@
     ],
     "paths": {
         "@models/*": ["src/models/*"],
+        "@constants/*": ["src/constants/*"],
     },
     "exclude": [
         "node_modules"

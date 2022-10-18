@@ -3,4 +3,8 @@ build
 node_modules
 out
 /out/
+/app/node_modules
+/app/out
+/app/coverage/
 /app/build/
+/data/test/
