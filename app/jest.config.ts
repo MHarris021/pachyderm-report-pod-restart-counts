@@ -91,7 +91,18 @@ export default {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  modulePathIgnorePatterns: [
+    "/node_modules/",
+    "/build/",
+    "/coverage/",
+    "/.vscode/",
+    "/.git/",
+    "/.github/",
+    "/.idea/",
+    "/.vs/",
+    "/.vscode/",
+
+  ],
 
   // Activates notifications for test results
   // notify: false,

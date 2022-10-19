@@ -2,8 +2,8 @@ import {DescribeFields, DescribeFieldType} from "./types";
 
 export enum VolumeFields {
     volumeType = "Type:",
-    claimName = "Claim Name:",
-    readOnly = "Read Only:",
+    claimName = "ClaimName:",
+    readOnly = "ReadOnly:",
     tokenExpirationSeconds = "TokenExpirationSeconds:",
     configMapName = "ConfigMapName:",
     configMapOptional = "ConfigMapOptional:",

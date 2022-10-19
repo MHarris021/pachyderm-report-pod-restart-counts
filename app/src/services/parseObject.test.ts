@@ -109,7 +109,7 @@ describe('parseObject', () => {
             "  value3: 3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {value1: "1", value2: "2", value3: "3"}});
+        expect(obj).toEqual({name:"test", value1: "1", value2: "2", value3: "3"});
     });
 
     // it should return the correct endLine when given an array of strings
@@ -132,7 +132,7 @@ describe('parseObject', () => {
             "    3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {array1: ["1", "2", "3"]}});
+        expect(obj).toEqual({name:"test", array1: ["1", "2", "3"]});
         expect(endLine).toEqual(4);
     });
 
@@ -149,7 +149,7 @@ describe('parseObject', () => {
             "    6",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {array1: ["1", "2", "3"], array2: ["4", "5", "6"]}});
+        expect(obj).toEqual({name:"test", array1: ["1", "2", "3"], array2: ["4", "5", "6"]});
         expect(endLine).toEqual(8);
     });
 
@@ -165,7 +165,7 @@ describe('parseObject', () => {
             "    3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]}});
+        expect(obj).toEqual({name:"test",value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]});
         expect(endLine).toEqual(7);
     });
 
@@ -187,13 +187,14 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({
-            test: {
+
+                name:"test",
                 array1: ["1", "2", "3"],
                 value1: "1",
                 value2: "2",
                 value3: "3",
                 array2: ["4", "5", "6"]
-            }
+
         });
         expect(endLine).toEqual(11);
     });
@@ -207,7 +208,7 @@ describe('parseObject', () => {
             "    value3: 3"
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {object1: {value1: "1", value2: "2", value3: "3"}}});
+        expect(obj).toEqual({name:"test",object1: {value1: "1", value2: "2", value3: "3"}});
         expect(endLine).toEqual(4);
     });
 
@@ -224,12 +225,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({
-            test: {
+
+                name:"test",
                 value1: "1",
                 value2: "2",
                 value3: "3",
                 object1: {value1: "1", value2: "2", value3: "3"}
-            }
+
         });
         expect(endLine).toEqual(7);
     });
@@ -247,7 +249,7 @@ describe('parseObject', () => {
             "    value3: 3"
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {array1: ["1", "2", "3"], object1: {value1: "1", value2: "2", value3: "3"}}});
+        expect(obj).toEqual({name:"test",array1: ["1", "2", "3"], object1: {value1: "1", value2: "2", value3: "3"}});
         expect(endLine).toEqual(8);
     });
 
@@ -268,13 +270,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({
-            test: {
+            name:"test",
                 value1: "1",
                 value2: "2",
                 value3: "3",
                 array1: ["1", "2", "3"],
                 object1: {value1: "1", value2: "2", value3: "3"}
-            }
+
         });
         expect(endLine).toEqual(11);
     });
@@ -289,7 +291,7 @@ describe('parseObject', () => {
             "      3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {object1: {array1: ["1", "2", "3"]}}});
+        expect(obj).toEqual({name:"test",object1: {array1: ["1", "2", "3"]}});
         expect(endLine).toEqual(5);
     });
 
@@ -306,7 +308,7 @@ describe('parseObject', () => {
             "      3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {object1: {value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]}}});
+        expect(obj).toEqual({name:"test", object1: {value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]}});
         expect(endLine).toEqual(8);
     });
 
@@ -320,7 +322,7 @@ describe('parseObject', () => {
             "      value3: 3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {object1: {subObject1: {value1: "1", value2: "2", value3: "3"}}}});
+        expect(obj).toEqual({name:"test",object1: {subObject1: {value1: "1", value2: "2", value3: "3"}}});
         expect(endLine).toEqual(5);
     });
 
@@ -338,14 +340,14 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({
-            test: {
+            name:"test",
                 object1: {
                     value1: "1",
                     value2: "2",
                     value3: "3",
                     subObject1: {value1: "1", value2: "2", value3: "3"}
                 }
-            }
+
         });
         expect(endLine).toEqual(8);
     });
@@ -361,7 +363,7 @@ describe('parseObject', () => {
             "        value3: 3",
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
-        expect(obj).toEqual({test: {object1: {subObject1: {subSubObject1: {value1: "1", value2: "2", value3: "3"}}}}});
+        expect(obj).toEqual({name:"test", object1: {subObject1: {subSubObject1: {value1: "1", value2: "2", value3: "3"}}}});
         expect(endLine).toEqual(6);
     });
 });

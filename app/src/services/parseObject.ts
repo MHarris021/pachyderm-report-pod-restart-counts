@@ -16,6 +16,9 @@ export type ParseObjectParams = {
 export function parseObject(params:ParseObjectParams): {obj: object, endLine: number} {
     const {lines, fields, currentLine, position, objectName} = params;
     let obj: object = {};
+    if (objectName) {
+        obj = updateObject(obj, "name", objectName);
+    }
     let currentPosition = position || 1;
     let currentLine1 = currentLine;
     while (startsWith(lines[currentLine1], " ", currentPosition)) {
@@ -53,9 +56,6 @@ export function parseObject(params:ParseObjectParams): {obj: object, endLine: nu
         if (startLine === currentLine1) {
             currentLine1++;
         }
-    }
-    if (objectName) {
-        obj = updateObject({}, objectName, obj);
     }
     return {obj, endLine: currentLine1};
 }

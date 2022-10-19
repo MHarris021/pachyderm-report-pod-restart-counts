@@ -14,7 +14,8 @@ export type DescribeField = {
 export enum DescribeFieldType {
     Value = 'value',
     Array = 'array',
-    Object = 'object'
+    Object = 'object',
+    ObjectArray = 'objectArray'
 }
 
 export type DescribeObject = {

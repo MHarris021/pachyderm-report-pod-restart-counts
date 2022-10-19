@@ -1,42 +1,47 @@
 import {DescribeField} from "../constants/types";
 import invariant from "tiny-invariant";
 import startsWith from "lodash.startswith";
-import {processField} from "./processField";
+import {parseObject} from "./parseObject";
+import {parseValue} from "./parseValue";
 
-export function parseObjects(lines: string[], field: DescribeField, currentLine: number, position: number = 0): { objects: object[], endLine: number } {
-    let objects: object[] = [];
-    let currentLine1 = currentLine;
-    const initialValue = lines[currentLine].split(": ")[1]?.trim()||"";
-    if (initialValue) {
-        objects.push({[field.name]: initialValue});
-        currentLine1++;
-    }
-    invariant(field.subFields, "Subfields are required for object");
+export type ParseObjectsParams = {
+    lines: string[];
+    field: DescribeField;
+    currentLine: number;
+    position?: number;
+}
+
+export type ParseObjectsResult = {
+    objectArray: object[];
+    objectArrayKey: string;
+    endLine: number;
+}
+
+export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
+    const {lines, field, currentLine, position} = params;
+    invariant(field.fieldType === 'objectArray', 'Field type must be objectArray');
+    invariant(field.subFields, 'Subfields are required for objectArray');
+    let objectArray: object[] = [];
+    const objectArrayKey = field.name;
+    let currentLine1 = currentLine+1;
+    let currentPosition = position || 1;
     const subFields = field.subFields;
     while (currentLine1 < lines.length && startsWith(lines[currentLine1], " ", position)) {
         const startLine = currentLine1;
-        let obj: object = {
-            name: lines[currentLine1].trim(),
-        };
-        currentLine1++;
         console.info(`Parsing object ${field.name} at line ${currentLine1} with value ${lines[currentLine1]}`);
-        while (currentLine1 < lines.length && startsWith(lines[currentLine1], " ", position + 2)) {
-            const startLine1 = currentLine1;
-            const line = lines[currentLine1].trim();
-            console.log(`Parsing object line: ${line}`);
-            subFields.forEach(subField => {
-                const {newObj, endLine} = processField(line, subField, obj, currentLine1, lines, position);
-                obj = newObj;
-                currentLine1 = endLine;
-            });
-            if (startLine1 === currentLine1) {
-                currentLine1++;
-            }
+        const startLine1 = currentLine1;
+        console.log(`Parsing object line: ${lines[currentLine1]}`);
+        const objectName = lines[currentLine1].split(":")[0].trim();
+        currentLine1++;
+        const {obj, endLine} = parseObject({lines, fields: subFields, currentLine: currentLine1, objectName,position: currentPosition + 2});
+        currentLine1 = endLine;
+        if (startLine1 === currentLine1) {
+              currentLine1++;
         }
-        objects.push({...obj});
+        objectArray.push(obj);
         if (startLine === currentLine1) {
             currentLine1++;
         }
     }
-    return {objects, endLine: currentLine1};
+    return {objectArray,objectArrayKey, endLine: currentLine1};
 }
