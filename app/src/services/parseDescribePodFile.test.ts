@@ -18,7 +18,7 @@ const etcdPod = {
         "suite=pachyderm"
     ],
     "annotations": [
-        "seccomp.security.alpha.kubernetes.io/pod"
+        "seccomp.security.alpha.kubernetes.io/pod: runtime/default"
     ],
     "status": "Running",
     "ip": "10.8.2.16",
@@ -103,15 +103,15 @@ const etcdPod = {
 
 describe("parseDescribePodFile",  () => {
 
-    // test that parseDescribePodFile returns the correct pod object for a valid describe pod file
-    test('parseDescribePodFile returns the correct pod object for a valid describe pod file', async () => {
+    // test that parseDescribePodFile returns the correct pod object and pod name for a valid describe pod file
+    test('parseDescribePodFile returns the correct pod object and pod name for a valid describe pod file', async () => {
 
         expect((await fsPromises.stat(etcdPodFile)).isFile()).toBe(true);
         console.info("etcdPodFile: ", etcdPodFile);
-        const {pod} = await parseDescribePodFile(etcdPodFile);
+        const {pod,podName} = await parseDescribePodFile(etcdPodFile);
         console.info("pod: ", JSON.stringify(pod));
+        expect(podName).toEqual("etcd-0");
         expect(pod).toEqual(etcdPod);
-
     });
 
 });

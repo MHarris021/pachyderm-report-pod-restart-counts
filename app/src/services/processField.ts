@@ -17,7 +17,7 @@ export type ProcessFieldParams = {
 
 export function processField(params:ProcessFieldParams): { obj: object, endLine: number } {
     const {lines, field, currentLine, position, objectName} = params;
-    console.info(`Processing field ${field.name} at line ${currentLine} with value ${lines[currentLine]}`);
+    console.info(`Processing field [${field.name}] at line ${currentLine} with value ${lines[currentLine]}`);
     let obj: object = {};
     if (objectName) {
         obj = updateObject(obj, "name", objectName);

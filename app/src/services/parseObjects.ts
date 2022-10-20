@@ -31,10 +31,13 @@ export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
         console.info(`Parsing object ${field.name} at line ${currentLine1} with value ${lines[currentLine1]}`);
         const startLine1 = currentLine1;
         const objectName = lines[currentLine1].split(":")[0].trim();
-        currentLine1++;
         const {obj, endLine} = parseObject({lines, fields: subFields, currentLine: currentLine1, objectName,position: currentPosition + 2});
         currentLine1 = endLine;
         objectArray.push(obj);
+        console.info(`Parsed object ${field.name} from line ${startLine} to line ${currentLine1}`);
+        if (startLine1 === currentLine1) {
+            currentLine1++;
+        }
     }
     return {objectArray,objectArrayKey, endLine: currentLine1};
 }

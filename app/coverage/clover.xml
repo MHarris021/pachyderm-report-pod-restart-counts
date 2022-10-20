@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1666261276280" clover="3.2.0">
-  <project timestamp="1666261276280" name="All files">
-    <metrics statements="556" coveredstatements="541" conditionals="53" coveredconditionals="45" methods="7" coveredmethods="7" elements="616" coveredelements="593" complexity="0" loc="556" ncloc="556" packages="2" files="11" classes="11"/>
+<coverage generated="1666305840402" clover="3.2.0">
+  <project timestamp="1666305840402" name="All files">
+    <metrics statements="534" coveredstatements="519" conditionals="46" coveredconditionals="38" methods="6" coveredmethods="6" elements="586" coveredelements="563" complexity="0" loc="534" ncloc="534" packages="2" files="10" classes="10"/>
     <package name="constants">
-      <metrics statements="318" coveredstatements="318" conditionals="15" coveredconditionals="15" methods="0" coveredmethods="0"/>
+      <metrics statements="324" coveredstatements="324" conditionals="15" coveredconditionals="15" methods="0" coveredmethods="0"/>
       <file name="containerFields.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/constants/containerFields.ts">
         <metrics statements="102" coveredstatements="102" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
@@ -279,7 +279,7 @@
         <line num="29" count="1" type="stmt"/>
       </file>
       <file name="volumeFields.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/constants/volumeFields.ts">
-        <metrics statements="53" coveredstatements="53" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
+        <metrics statements="59" coveredstatements="59" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -330,15 +330,21 @@
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="1" type="stmt"/>
         <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="52" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="53" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="59" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
     </package>
     <package name="services">
-      <metrics statements="238" coveredstatements="223" conditionals="38" coveredconditionals="30" methods="7" coveredmethods="7"/>
+      <metrics statements="210" coveredstatements="195" conditionals="31" coveredconditionals="23" methods="6" coveredmethods="6"/>
       <file name="parseArray.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/parseArray.ts">
-        <metrics statements="29" coveredstatements="29" conditionals="8" coveredconditionals="7" methods="1" coveredmethods="1"/>
+        <metrics statements="30" coveredstatements="30" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -347,62 +353,28 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="9" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="10" count="13" type="stmt"/>
-        <line num="11" count="13" type="stmt"/>
-        <line num="12" count="13" type="stmt"/>
-        <line num="13" count="13" type="cond" truecount="0" falsecount="1"/>
-        <line num="14" count="13" type="stmt"/>
-        <line num="15" count="13" type="cond" truecount="3" falsecount="0"/>
-        <line num="16" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="7" type="stmt"/>
-        <line num="18" count="7" type="stmt"/>
-        <line num="19" count="7" type="stmt"/>
-        <line num="20" count="13" type="stmt"/>
-        <line num="21" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="22" type="stmt"/>
-        <line num="23" count="22" type="stmt"/>
-        <line num="24" count="22" type="stmt"/>
-        <line num="25" count="22" type="stmt"/>
-        <line num="26" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="27" count="13" type="stmt"/>
-        <line num="28" count="13" type="stmt"/>
-        <line num="29" count="13" type="stmt"/>
-      </file>
-      <file name="parseDescribePodFile.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/parseDescribePodFile.ts">
-        <metrics statements="32" coveredstatements="30" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="18" count="152" type="stmt"/>
-        <line num="19" count="152" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="17" type="stmt"/>
-        <line num="21" count="17" type="stmt"/>
-        <line num="22" count="17" type="stmt"/>
-        <line num="23" count="17" type="stmt"/>
-        <line num="24" count="152" type="stmt"/>
-        <line num="25" count="8" type="stmt"/>
-        <line num="26" count="8" type="cond" truecount="0" falsecount="1"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="8" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
+        <line num="11" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="stmt"/>
       </file>
       <file name="parseObject.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/parseObject.ts">
         <metrics statements="40" coveredstatements="40" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
@@ -421,34 +393,34 @@
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="3" type="cond" truecount="0" falsecount="1"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="5" type="stmt"/>
-        <line num="26" count="5" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="28" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="51" type="stmt"/>
-        <line num="30" count="51" type="cond" truecount="1" falsecount="0"/>
-        <line num="31" count="23" type="stmt"/>
-        <line num="32" count="23" type="stmt"/>
-        <line num="33" count="51" type="stmt"/>
-        <line num="34" count="5" type="stmt"/>
-        <line num="35" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="5" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="3" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="24" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="28" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="62" type="stmt"/>
+        <line num="30" count="62" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+        <line num="33" count="62" type="stmt"/>
+        <line num="34" count="6" type="stmt"/>
+        <line num="35" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="6" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
       </file>
       <file name="parseObjects.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/parseObjects.ts">
-        <metrics statements="40" coveredstatements="40" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <metrics statements="43" coveredstatements="41" conditionals="5" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -468,27 +440,30 @@
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
-        <line num="20" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="21" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="24" count="2" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="30" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
-        <line num="34" count="3" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="36" count="3" type="stmt"/>
-        <line num="37" count="3" type="stmt"/>
-        <line num="38" count="3" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
-        <line num="40" count="2" type="stmt"/>
+        <line num="20" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="36" count="4" type="stmt"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="38" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
       </file>
       <file name="parseValue.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/parseValue.ts">
         <metrics statements="24" coveredstatements="24" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -510,12 +485,12 @@
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="19" count="25" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="25" type="stmt"/>
-        <line num="21" count="25" type="stmt"/>
-        <line num="22" count="25" type="cond" truecount="0" falsecount="1"/>
-        <line num="23" count="25" type="stmt"/>
-        <line num="24" count="25" type="stmt"/>
+        <line num="19" count="33" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="33" type="stmt"/>
+        <line num="21" count="33" type="stmt"/>
+        <line num="22" count="33" type="cond" truecount="0" falsecount="1"/>
+        <line num="23" count="33" type="stmt"/>
+        <line num="24" count="33" type="stmt"/>
       </file>
       <file name="processField.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/processField.ts">
         <metrics statements="68" coveredstatements="55" conditionals="11" coveredconditionals="8" methods="1" coveredmethods="1"/>
@@ -536,33 +511,33 @@
         <line num="15" count="1" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="203" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="203" type="stmt"/>
-        <line num="20" count="203" type="stmt"/>
-        <line num="21" count="203" type="stmt"/>
-        <line num="22" count="203" type="cond" truecount="0" falsecount="1"/>
+        <line num="18" count="328" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="328" type="stmt"/>
+        <line num="20" count="328" type="stmt"/>
+        <line num="21" count="328" type="stmt"/>
+        <line num="22" count="328" type="cond" truecount="0" falsecount="1"/>
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
-        <line num="25" count="203" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="203" type="stmt"/>
-        <line num="27" count="203" type="cond" truecount="2" falsecount="0"/>
-        <line num="28" count="203" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="40" type="stmt"/>
-        <line num="30" count="40" type="cond" truecount="1" falsecount="0"/>
-        <line num="31" count="25" type="stmt"/>
-        <line num="32" count="25" type="stmt"/>
-        <line num="33" count="25" type="stmt"/>
-        <line num="34" count="25" type="stmt"/>
-        <line num="35" count="25" type="stmt"/>
-        <line num="36" count="25" type="stmt"/>
-        <line num="37" count="40" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="13" type="stmt"/>
-        <line num="39" count="13" type="stmt"/>
-        <line num="40" count="13" type="stmt"/>
-        <line num="41" count="13" type="stmt"/>
-        <line num="42" count="13" type="stmt"/>
-        <line num="43" count="13" type="stmt"/>
-        <line num="44" count="40" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="328" type="cond" truecount="1" falsecount="0"/>
+        <line num="26" count="328" type="stmt"/>
+        <line num="27" count="328" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="328" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="36" type="stmt"/>
+        <line num="30" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="30" type="stmt"/>
+        <line num="32" count="30" type="stmt"/>
+        <line num="33" count="30" type="stmt"/>
+        <line num="34" count="30" type="stmt"/>
+        <line num="35" count="30" type="stmt"/>
+        <line num="36" count="30" type="stmt"/>
+        <line num="37" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="39" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="44" count="36" type="cond" truecount="0" falsecount="1"/>
         <line num="45" count="0" type="stmt"/>
         <line num="46" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
@@ -570,31 +545,31 @@
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
-        <line num="52" count="40" type="cond" truecount="1" falsecount="0"/>
-        <line num="53" count="2" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
-        <line num="55" count="2" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="40" type="cond" truecount="0" falsecount="1"/>
+        <line num="52" count="36" type="cond" truecount="1" falsecount="0"/>
+        <line num="53" count="3" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="56" count="3" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="58" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="36" type="cond" truecount="0" falsecount="1"/>
         <line num="61" count="0" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
         <line num="64" count="0" type="stmt"/>
-        <line num="65" count="40" type="stmt"/>
-        <line num="66" count="40" type="stmt"/>
-        <line num="67" count="203" type="stmt"/>
-        <line num="68" count="203" type="stmt"/>
+        <line num="65" count="36" type="stmt"/>
+        <line num="66" count="36" type="stmt"/>
+        <line num="67" count="328" type="stmt"/>
+        <line num="68" count="328" type="stmt"/>
       </file>
       <file name="updateObject.ts" path="/home/mharris/Projects/Pachyderm/pachyderm-report-pod-restart-counts/app/src/services/updateObject.ts">
         <metrics statements="5" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-        <line num="1" count="43" type="cond" truecount="1" falsecount="0"/>
-        <line num="2" count="43" type="stmt"/>
-        <line num="3" count="43" type="stmt"/>
-        <line num="4" count="43" type="stmt"/>
-        <line num="5" count="43" type="stmt"/>
+        <line num="1" count="40" type="cond" truecount="1" falsecount="0"/>
+        <line num="2" count="40" type="stmt"/>
+        <line num="3" count="40" type="stmt"/>
+        <line num="4" count="40" type="stmt"/>
+        <line num="5" count="40" type="stmt"/>
       </file>
     </package>
   </project>

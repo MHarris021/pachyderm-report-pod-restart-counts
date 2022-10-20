@@ -126,6 +126,7 @@ describe('parseObject', () => {
     // it should return an object with the correct keys and values when given an array of strings
     it('should return an object with the correct keys and values when given an array of strings', () => {
         const lines = [
+            "test:",
             "  value1: 1",
             "  value2: 2",
             "  value3: 3",
@@ -148,6 +149,7 @@ describe('parseObject', () => {
     // it should return the correct object and endLine when given an array field
     it('should return the correct object and endLine when given an array of strings and array fields', () => {
         const lines = [
+            "test:",
             "  array1:",
             "    1",
             "    2",
@@ -155,12 +157,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test", array1: ["1", "2", "3"]});
-        expect(endLine).toEqual(4);
+        expect(endLine).toEqual(5);
     });
 
     // it should return the correct object and endLine when given multiple array fields
     it('should return the correct object and endLine when given multiple array fields', () => {
         const lines = [
+            "test:",
             "  array1:",
             "    1",
             "    2",
@@ -172,12 +175,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test", array1: ["1", "2", "3"], array2: ["4", "5", "6"]});
-        expect(endLine).toEqual(8);
+        expect(endLine).toEqual(9);
     });
 
     // it should return the correct object and endLine when given an array field and value fields
     it('should return the correct object and endLine when given an array field and value fields', () => {
         const lines = [
+            "test:",
             "  value1: 1",
             "  value2: 2",
             "  value3: 3",
@@ -188,12 +192,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test",value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]});
-        expect(endLine).toEqual(7);
+        expect(endLine).toEqual(8);
     });
 
     // it should return the correct object and endLine when given a mix of array fields and value fields
     it('should return the correct object and endLine when given a mix of array fields and value fields', () => {
         const lines = [
+            "test:",
             "  array1:",
             "    1",
             "    2",
@@ -218,12 +223,13 @@ describe('parseObject', () => {
                 array2: ["4", "5", "6"]
 
         });
-        expect(endLine).toEqual(11);
+        expect(endLine).toEqual(12);
     });
 
     // it should return the correct object and endLine when given an object field
     it('should return the correct object and endLine when given an object field', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    value1: 1",
             "    value2: 2",
@@ -231,12 +237,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test",object1: {value1: "1", value2: "2", value3: "3"}});
-        expect(endLine).toEqual(4);
+        expect(endLine).toEqual(5);
     });
 
     // it should return the correct object and endLine when given a mix of object fields and value fields
     it('should return the correct object and endLine when given a mix of object fields and value fields', () => {
         const lines = [
+            "test:",
             "  value1: 1",
             "  value2: 2",
             "  value3: 3",
@@ -255,12 +262,13 @@ describe('parseObject', () => {
                 object1: {value1: "1", value2: "2", value3: "3"}
 
         });
-        expect(endLine).toEqual(7);
+        expect(endLine).toEqual(8);
     });
 
     // it should return the correct object and endLine when given a mix of object fields and array fields
     it('should return the correct object and endLine when given a mix of object fields and array fields', () => {
         const lines = [
+            "test:",
             "  array1:",
             "    1",
             "    2",
@@ -272,12 +280,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test",array1: ["1", "2", "3"], object1: {value1: "1", value2: "2", value3: "3"}});
-        expect(endLine).toEqual(8);
+        expect(endLine).toEqual(9);
     });
 
     // it should return the correct object and endLine when given a mix of object fields, array fields, and value fields
     it('should return the correct object and endLine when given a mix of object fields, array fields, and value fields', () => {
         const lines = [
+            "test:",
             "  value1: 1",
             "  value2: 2",
             "  value3: 3",
@@ -300,12 +309,13 @@ describe('parseObject', () => {
                 object1: {value1: "1", value2: "2", value3: "3"}
 
         });
-        expect(endLine).toEqual(11);
+        expect(endLine).toEqual(12);
     });
 
     // it should return the correct object and endLine when given an object field that includes an array field
     it('should return the correct object and endLine when given an object field that includes an array field', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    array1:",
             "      1",
@@ -314,12 +324,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test",object1: {array1: ["1", "2", "3"]}});
-        expect(endLine).toEqual(5);
+        expect(endLine).toEqual(6);
     });
 
     // it should return the correct object and endLine when given an object field that includes an array field and value fields
     it('should return the correct object and endLine when given an object field that includes an array field and value fields', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    value1: 1",
             "    value2: 2",
@@ -331,12 +342,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test", object1: {value1: "1", value2: "2", value3: "3", array1: ["1", "2", "3"]}});
-        expect(endLine).toEqual(8);
+        expect(endLine).toEqual(9);
     });
 
     // it should return the correct object and endLine when given an object field that includes an object field
     it('should return the correct object and endLine when given an object field that includes an object field', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    subObject1:",
             "      value1: 1",
@@ -345,12 +357,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test",object1: {subObject1: {value1: "1", value2: "2", value3: "3"}}});
-        expect(endLine).toEqual(5);
+        expect(endLine).toEqual(6);
     });
 
     // it should return the correct object and endLine when given an object field that includes an object field and value fields
     it('should return the correct object and endLine when given an object field that includes an object field and value fields', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    value1: 1",
             "    value2: 2",
@@ -371,12 +384,13 @@ describe('parseObject', () => {
                 }
 
         });
-        expect(endLine).toEqual(8);
+        expect(endLine).toEqual(9);
     });
 
     // it should return the correct object and endLine when given an arbitrary number of nested objects
     it('should return the correct object and endLine when given an arbitrary number of nested objects', () => {
         const lines = [
+            "test:",
             "  object1:",
             "    subObject1:",
             "      subSubObject1:",
@@ -386,12 +400,13 @@ describe('parseObject', () => {
         ];
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test", object1: {subObject1: {subSubObject1: {value1: "1", value2: "2", value3: "3"}}}});
-        expect(endLine).toEqual(6);
+        expect(endLine).toEqual(7);
     });
 
     // it should return the correct object and endLine when given an objectArray field
     it('should return the correct object and endLine when given an objectArray field', () => {
         const lines = [
+            "test:",
             "  objectArray1:",
             "    object1:",
             "      value1: 1",
@@ -410,6 +425,6 @@ describe('parseObject', () => {
                     {name:"object2",value1: "1", value2: "2", value3: "3"}
                 ]
         });
-        expect(endLine).toEqual(9);
+        expect(endLine).toEqual(10);
     });
 });

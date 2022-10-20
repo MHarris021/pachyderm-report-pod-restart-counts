@@ -16,11 +16,11 @@ export type ParseObjectParams = {
 export function parseObject(params:ParseObjectParams): {obj: object, endLine: number} {
     const {lines, fields, currentLine, position, objectName} = params;
     let o: object = {};
-    if (objectName) {
-        o = updateObject(o, "name", objectName);
-    }
     let currentPosition = position || 1;
-    let currentLine1 = currentLine;
+    let currentLine1 = currentLine;if (objectName) {
+        o = updateObject(o, "name", objectName);
+        currentLine1++;
+    }
     while (currentLine1<lines.length&&startsWith(lines[currentLine1], " ", currentPosition)) {
         const startLine = currentLine1;
         const line = lines[currentLine1].trim();

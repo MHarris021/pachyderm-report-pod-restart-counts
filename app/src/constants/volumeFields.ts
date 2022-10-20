@@ -8,6 +8,7 @@ export enum VolumeFields {
     configMapName = "ConfigMapName:",
     configMapOptional = "ConfigMapOptional:",
     downwardAPI = "DownwardAPI:",
+    optional = "Optional:",
 }
 
 export const volumeFields:DescribeFields = [
@@ -44,6 +45,11 @@ export const volumeFields:DescribeFields = [
     {
         name: "downwardAPI",
         field: VolumeFields.downwardAPI,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
+        name: "optional",
+        field: VolumeFields.optional,
         fieldType: DescribeFieldType.Value,
     }
 ]

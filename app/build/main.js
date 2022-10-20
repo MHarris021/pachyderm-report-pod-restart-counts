@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var parseDescribeFileToJson_1 = require("./services/parseDescribeFileToJson");
+var parseDescribePodFile_1 = require("./services/parseDescribePodFile");
 var fsPromises = require('fs').promises;
 var path = require('path');
 function main() {
@@ -61,7 +61,7 @@ function main() {
                     return [4 /*yield*/, fsPromises.stat(filePath)];
                 case 3:
                     if (!(_b.sent()).isFile()) return [3 /*break*/, 6];
-                    return [4 /*yield*/, (0, parseDescribeFileToJson_1.parseDescribeFileToJson)(filePath)];
+                    return [4 /*yield*/, (0, parseDescribePodFile_1.parseDescribePodFile)(filePath)];
                 case 4:
                     output = _b.sent();
                     fileName = output.name;

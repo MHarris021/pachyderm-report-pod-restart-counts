@@ -1,4 +1,6 @@
 import startsWith from "lodash.startswith";
+import {parseValue} from "./parseValue";
+import isEmpty from "lodash.isempty";
 
 export type ParseArrayParams = {
     lines: string[];
@@ -12,10 +14,9 @@ export function parseArray(params:ParseArrayParams): {array: string[], endLine: 
     let currentLine1 = currentLine;
     let currentPosition = position || 1;
     console.info(`Parsing array: ${lines[currentLine1]}`);
-    const initialValue = lines[currentLine1].split(": ")[1]?.trim()||"";
-    if (initialValue) {
-        array.push(initialValue);
-
+    const {value} = parseValue(lines[currentLine1]);
+    if(!isEmpty(value)) {
+        array.push(value);
     }
     currentLine1++;
     while (startsWith(lines[currentLine1], " ", currentPosition)) {
@@ -24,6 +25,6 @@ export function parseArray(params:ParseArrayParams): {array: string[], endLine: 
         currentLine1++;
     }
     array = array.filter((item) => item !== "");
-    console.log(`Values: ${array}`);
+    console.info(`Values: ${array}`);
     return {array, endLine: currentLine1};
 }

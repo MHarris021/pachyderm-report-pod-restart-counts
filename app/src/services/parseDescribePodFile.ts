@@ -4,6 +4,8 @@ import {podFields} from "../constants/podFields";
 import {parseObject} from "./parseObject";
 import {processField} from "./processField";
 import isEmpty from "lodash.isempty";
+import invariant from "tiny-invariant";
+import {Pod} from "../models/types";
 
 export async function parseDescribePodFile(filePath: string): Promise<any> {
     console.info(`Parsing file ${filePath}`);
@@ -11,7 +13,7 @@ export async function parseDescribePodFile(filePath: string): Promise<any> {
     const lines = fileContents.split(/\r?\n/);
     console.info(`Parsing file with ${lines.length} lines`);
     let currentLine = 0;
-    let pod = {};
+    let pod:Pod = {};
     while (currentLine < lines.length) {
         const startLine = currentLine;
         podFields.forEach(field => {
@@ -27,6 +29,9 @@ export async function parseDescribePodFile(filePath: string): Promise<any> {
             currentLine++;
         }
     }
+    invariant(pod, 'Pod is required');
     console.info(`Parsed pod: ${JSON.stringify(pod)}`);
-    return {pod};
+    invariant(pod.name, 'Pod name is required');
+    const podName = pod["name"];
+    return {pod, podName};
 }
