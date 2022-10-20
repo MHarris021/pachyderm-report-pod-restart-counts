@@ -53,7 +53,7 @@ export const containerFields: DescribeFields = [
     {
         name: "args",
         field: ContainerFields.args,
-        fieldType: DescribeFieldType.Value,
+        fieldType: DescribeFieldType.Array,
     },
     {
         name: "state",

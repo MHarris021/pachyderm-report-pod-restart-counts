@@ -2,7 +2,7 @@ import {DescribeField} from "../constants/types";
 import invariant from "tiny-invariant";
 import startsWith from "lodash.startswith";
 import {parseObject} from "./parseObject";
-import {parseValue} from "./parseValue";
+
 
 export type ParseObjectsParams = {
     lines: string[];
@@ -26,22 +26,15 @@ export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
     let currentLine1 = currentLine+1;
     let currentPosition = position || 1;
     const subFields = field.subFields;
-    while (currentLine1 < lines.length && startsWith(lines[currentLine1], " ", position)) {
+    while ((currentLine1 < lines.length) && startsWith(lines[currentLine1], " ", position)) {
         const startLine = currentLine1;
         console.info(`Parsing object ${field.name} at line ${currentLine1} with value ${lines[currentLine1]}`);
         const startLine1 = currentLine1;
-        console.log(`Parsing object line: ${lines[currentLine1]}`);
         const objectName = lines[currentLine1].split(":")[0].trim();
         currentLine1++;
         const {obj, endLine} = parseObject({lines, fields: subFields, currentLine: currentLine1, objectName,position: currentPosition + 2});
         currentLine1 = endLine;
-        if (startLine1 === currentLine1) {
-              currentLine1++;
-        }
         objectArray.push(obj);
-        if (startLine === currentLine1) {
-            currentLine1++;
-        }
     }
     return {objectArray,objectArrayKey, endLine: currentLine1};
 }

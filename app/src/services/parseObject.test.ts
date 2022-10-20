@@ -97,6 +97,28 @@ const fields: DescribeFields = [
                 ]
             }
         ]
+    },
+    {
+        field: "objectArray1",
+        fieldType: DescribeFieldType.ObjectArray,
+        name: "objectArray1",
+        subFields: [
+            {
+                field: "value1",
+                fieldType: DescribeFieldType.Value,
+                name: "value1",
+            },
+            {
+                field: "value2",
+                fieldType: DescribeFieldType.Value,
+                name: "value2",
+            },
+            {
+                field: "value3",
+                fieldType: DescribeFieldType.Value,
+                name: "value3",
+            }
+        ]
     }
 ];
 
@@ -365,5 +387,29 @@ describe('parseObject', () => {
         const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
         expect(obj).toEqual({name:"test", object1: {subObject1: {subSubObject1: {value1: "1", value2: "2", value3: "3"}}}});
         expect(endLine).toEqual(6);
+    });
+
+    // it should return the correct object and endLine when given an objectArray field
+    it('should return the correct object and endLine when given an objectArray field', () => {
+        const lines = [
+            "  objectArray1:",
+            "    object1:",
+            "      value1: 1",
+            "      value2: 2",
+            "      value3: 3",
+            "    object2:",
+            "      value1: 1",
+            "      value2: 2",
+            "      value3: 3",
+        ];
+        const {obj, endLine} = parseObject({lines, currentLine: 0, fields, objectName: "test"});
+        expect(obj).toEqual({
+            name:"test",
+                objectArray1: [
+                    {name:"object1", value1: "1", value2: "2", value3: "3"},
+                    {name:"object2",value1: "1", value2: "2", value3: "3"}
+                ]
+        });
+        expect(endLine).toEqual(9);
     });
 });

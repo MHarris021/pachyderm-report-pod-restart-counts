@@ -19,7 +19,7 @@ export enum PodFields {
     containers = "Containers:",
     volumes = "Volumes:",
     initContainers = "Init Containers:",
-    qOSClass = "QoS Class:",
+    qosClass = "QoS Class:",
     nodeSelectors = "Node-Selectors:",
     tolerations = "Tolerations:",
 }
@@ -59,13 +59,13 @@ export const podFields:DescribeFields = [
     {
         name: "containers",
         field: PodFields.containers,
-        fieldType: DescribeFieldType.Object,
+        fieldType: DescribeFieldType.ObjectArray,
         subFields: containerFields
     },
     {
         name: "volumes",
         field: PodFields.volumes,
-        fieldType: DescribeFieldType.Object,
+        fieldType: DescribeFieldType.ObjectArray,
         subFields: volumeFields,
     },
     {
@@ -86,7 +86,7 @@ export const podFields:DescribeFields = [
 
     {
      name: "qosClass",
-        field: PodFields.qOSClass,
+        field: PodFields.qosClass,
         fieldType: DescribeFieldType.Value,
     },
     {
@@ -102,7 +102,7 @@ export const podFields:DescribeFields = [
     {
         name: "initContainers",
         field: PodFields.initContainers,
-        fieldType: DescribeFieldType.Object,
+        fieldType: DescribeFieldType.ObjectArray,
         subFields: containerFields,
     },
     {

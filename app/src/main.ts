@@ -1,5 +1,5 @@
 import camelCase from "lodash.camelcase";
-import {parseDescribeFileToJson} from "./services/parseDescribeFileToJson";
+import {parseDescribePodFile} from "./services/parseDescribePodFile";
 
 const {promises: fsPromises} = require('fs');
 const path = require('path');
@@ -12,7 +12,7 @@ async function main() {
       const filePath = path.join(inputDir, file);
       if ((await fsPromises.stat(filePath)).isFile()) {
         //const {output, fileName} = await analyzeFile(filePath);
-        const output = await parseDescribeFileToJson(filePath);
+        const output = await parseDescribePodFile(filePath);
         const fileName = output.name;
         const outputFilePath = path.join(outputDir, fileName+'.json');
         await fsPromises.writeFile(outputFilePath, JSON.stringify(output, null, 2));
