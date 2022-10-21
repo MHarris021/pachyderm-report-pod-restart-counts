@@ -5,10 +5,13 @@ export enum VolumeFields {
     claimName = "ClaimName:",
     readOnly = "ReadOnly:",
     tokenExpirationSeconds = "TokenExpirationSeconds:",
+    medium = "Medium:",
     configMapName = "ConfigMapName:",
     configMapOptional = "ConfigMapOptional:",
     downwardAPI = "DownwardAPI:",
     optional = "Optional:",
+    sizeLimit = "SizeLimit:",
+    secretName = "SecretName:",
 }
 
 export const volumeFields:DescribeFields = [
@@ -50,6 +53,22 @@ export const volumeFields:DescribeFields = [
     {
         name: "optional",
         field: VolumeFields.optional,
+        fieldType: DescribeFieldType.Value,
+
+    },
+    {
+        name: "medium",
+        field: VolumeFields.medium,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
+        name: "sizeLimit",
+        field: VolumeFields.sizeLimit,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
+        name: "secretName",
+        field: VolumeFields.secretName,
         fieldType: DescribeFieldType.Value,
     }
 ]

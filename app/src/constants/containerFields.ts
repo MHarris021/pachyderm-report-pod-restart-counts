@@ -13,9 +13,12 @@ export enum ContainerFields {
     lastState = "Last State:",
     restartCount = "Restart Count:",
     ready = "Ready:",
+    requests = "Requests:",
     liveness = "Liveness:",
     readiness = "Readiness:",
+    startup = "Startup:",
     environment = "Environment:",
+    environmentVariablesFrom = "Environment Variables from:",
     mounts = "Mounts:",
 }
 
@@ -86,13 +89,28 @@ export const containerFields: DescribeFields = [
         fieldType: DescribeFieldType.Value,
     },
     {
+        name: "startup",
+        field: ContainerFields.startup,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
         name: "environment",
         field: ContainerFields.environment,
         fieldType: DescribeFieldType.Array,
     },
     {
+        name: "environmentVariablesFrom",
+        field: ContainerFields.environmentVariablesFrom,
+        fieldType: DescribeFieldType.Array,
+    },
+    {
         name: "mounts",
         field: ContainerFields.mounts,
+        fieldType: DescribeFieldType.Array,
+    },
+    {
+        name: "requests",
+        field: ContainerFields.requests,
         fieldType: DescribeFieldType.Array,
     }
     ];

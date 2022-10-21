@@ -36,7 +36,7 @@ export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
         objectArray.push(obj);
         console.info(`Parsed object ${field.name} from line ${startLine} to line ${currentLine1}`);
         if (startLine1 === currentLine1) {
-            currentLine1++;
+            break;
         }
     }
     return {objectArray,objectArrayKey, endLine: currentLine1};

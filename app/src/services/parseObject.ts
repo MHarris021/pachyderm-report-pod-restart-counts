@@ -33,7 +33,7 @@ export function parseObject(params:ParseObjectParams): {obj: object, endLine: nu
             currentLine1 = endLine;
         });
         if (startLine === currentLine1) {
-            currentLine1++;
+break;
         }
     }
     return {obj:o, endLine: currentLine1};
