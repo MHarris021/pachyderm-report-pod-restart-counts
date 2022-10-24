@@ -1,7 +1,14 @@
 import * as path from "path";
 import {parseDescribePodFile} from "./parseDescribePodFile";
 import {promises as fsPromises} from "fs";
-import {etcdPod, kubeEventTailPod, pachdPod, pgBouncerPod} from "../../test/fixtures/expectedPodValues";
+import {
+    cloudSqlAuthProxyPod,
+    consolePod,
+    etcdPod,
+    kubeEventTailPod,
+    pachdPod,
+    pgBouncerPod
+} from "../../test/fixtures/expectedPodValues";
 
 
 const testFilePath = path.join(__dirname, "..", "..", "test", "data");
@@ -9,6 +16,8 @@ const etcdPodFile = path.join(testFilePath, "etcd-describe.txt");
 const pachdPodFile = path.join(testFilePath, "pachd-describe.txt");
 const pgBouncerPodFile = path.join(testFilePath, "pg-bouncer-describe.txt");
 const kubeEventTailPodFile = path.join(testFilePath, "kube-event-tail-describe.txt");
+const consolePodFile = path.join(testFilePath, "console-describe.txt");
+const cloudSqlAuthProxyPodFile = path.join(testFilePath, "cloudsql-auth-proxy-describe.txt");
 
 describe("parseDescribePodFile", () => {
 
@@ -50,5 +59,25 @@ describe("parseDescribePodFile", () => {
         console.info("pod: ", JSON.stringify(pod));
         expect(podName).toEqual("pachyderm-kube-event-tail-cc8765df8-d2krb");
         expect(pod).toEqual(kubeEventTailPod);
+    });
+
+    // test that parseDescribePodFile returns the correct console pod object and pod name for a valid describe pod file
+    test('parseDescribePodFile returns the correct console pod object and pod name for a valid describe pod file', async () => {
+       expect((await fsPromises.stat(consolePodFile)).isFile()).toBe(true);
+         console.info("consolePodFile: ", consolePodFile);
+            const {pod, podName} = await parseDescribePodFile(consolePodFile);
+            console.info("pod: ", JSON.stringify(pod));
+            expect(podName).toEqual("console-5c559856c6-vt4dd");
+            expect(pod).toEqual(consolePod);
+    });
+
+    // test that parseDescribePodFile returns the correct cloudsql-auth-proxy pod object and pod name for a valid describe pod file
+    test('parseDescribePodFile returns the correct cloudsql-auth-proxy pod object and pod name for a valid describe pod file', async () => {
+        expect((await fsPromises.stat(cloudSqlAuthProxyPodFile)).isFile()).toBe(true);
+        console.info("cloudSqlAuthProxyPodFile: ", cloudSqlAuthProxyPodFile);
+        const {pod, podName} = await parseDescribePodFile(cloudSqlAuthProxyPodFile);
+        console.info("pod: ", JSON.stringify(pod));
+        expect(podName).toEqual("cloudsql-auth-proxy-7d94b6dc74-lmqmm");
+        expect(pod).toEqual(cloudSqlAuthProxyPod);
     });
 });

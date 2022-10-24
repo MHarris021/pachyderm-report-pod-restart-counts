@@ -441,3 +441,180 @@ export const kubeEventTailPod = {
         "<none>"
     ]
 }
+
+export const consolePod = {
+    "name": "console-5c559856c6-vt4dd",
+    "namespace": "default",
+    "priority": "0",
+    "node": "gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194",
+    "startTime": "Wed, 05 Oct 2022 07:16:29 +0000",
+    "labels": [
+        "app=console",
+        "pod-template-hash=5c559856c6",
+        "suite=pachyderm"
+    ],
+    "annotations": [
+        "checksum/helm-values: 2004251ce2948ece076430fb082ed89dd6a57d921dc3a43793559830e91ed8b1",
+        "seccomp.security.alpha.kubernetes.io/pod: runtime/default"
+    ],
+    "status": "Running",
+    "ip": "10.8.2.29",
+    "ips": [
+        "IP:           10.8.2.29"
+    ],
+    "controlledBy": "ReplicaSet/console-5c559856c6",
+    "containers": [
+        {
+            "name": "console",
+            "containerId": "containerd://60e9cc1c8e3bfd724d904361ab989fedb0f92fa3cb9a93ada10c47de5d0f5d89",
+            "image": "pachyderm/haberdashery:2.3.4-1",
+            "imageId": "docker.io/pachyderm/haberdashery@sha256:78f8d4283dc4a431db3e59c4ea4b225e5305dfb3bb20b8a960ee49950a294c38",
+            "port": "4000/TCP",
+            "hostPort": "0/TCP",
+            "state": ["Running",
+                "Started:      Wed, 05 Oct 2022 07:16:30 +0000"
+            ],
+            "ready": "True",
+            "restartCount": "0",
+            "liveness": "http-get http://:console-http/ delay=0s timeout=1s period=10s #success=1 #failure=3",
+            "readiness": "http-get http://:console-http/ delay=0s timeout=1s period=10s #success=1 #failure=3",
+            "environment": [
+                "REACT_APP_RUNTIME_SUBSCRIPTIONS_PREFIX:  :4000/graphql",
+                "ISSUER_URI:                              http://pachd:30658",
+                "REACT_APP_RUNTIME_ISSUER_URI:            http://localhost:30658",
+                "REACT_APP_RUNTIME_DISABLE_TELEMETRY:     false",
+                "OAUTH_REDIRECT_URI:                      http://localhost:4000/oauth/callback/?inline=true",
+                "OAUTH_CLIENT_ID:                         console",
+                "GRAPHQL_PORT:                            4000",
+                "OAUTH_PACHD_CLIENT_ID:                   pachd",
+                "PACHD_ADDRESS:                           pachd-peer.default.svc.cluster.local:30653",
+                "OAUTH_CLIENT_SECRET:                     <set to the key 'OAUTH_CLIENT_SECRET' in secret 'pachyderm-console-secret'>  Optional: false",
+                "UPGRADE_NO_OP:                           hegOJnaOUwNBYVtqntXefXGOoPTLYebG"
+            ],
+            "mounts": [
+                "/home/ from home (rw)",
+                "/tmp/ from tmp (rw)",
+                "/var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sxmnl (ro)"
+            ]
+        }
+    ],
+    "conditions": [
+        "Type              Status",
+        "Initialized       True",
+        "Ready             True",
+        "ContainersReady   True",
+        "PodScheduled      True"
+    ],
+    "volumes": [
+        {
+            "name": "tmp",
+            "type": "EmptyDir (a temporary directory that shares a pod's lifetime)",
+            "medium": "",
+            "sizeLimit": "<unset>"
+        },
+        {
+            "name": "home",
+            "type": "EmptyDir (a temporary directory that shares a pod's lifetime)",
+            "medium": "",
+            "sizeLimit": "<unset>"
+        },
+        {
+            "name": "kube-api-access-sxmnl",
+            "type": "Projected (a volume that contains injected data from multiple sources)",
+            "tokenExpirationSeconds": "3607",
+            "configMapName": "kube-root-ca.crt",
+            "configMapOptional": "<nil>",
+            "downwardApi": "true",
+        }
+    ],
+    "qoSClass": "BestEffort",
+    "nodeSelectors": [
+        "<none>"
+    ],
+    "tolerations": [
+        "node.kubernetes.io/not-ready:NoExecute op=Exists for 300s",
+        "node.kubernetes.io/unreachable:NoExecute op=Exists for 300s"
+    ],
+    "events": [
+        "<none>"
+    ]
+}
+
+export const cloudSqlAuthProxyPod = {
+        "name": "cloudsql-auth-proxy-7d94b6dc74-lmqmm",
+        "namespace": "default",
+        "priority": "0",
+        "node": "gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194",
+        "startTime": "Wed, 05 Oct 2022 06:24:37 +0000",
+        "labels": [
+            "app=cloudsql-auth-proxy",
+            "pod-template-hash=7d94b6dc74",
+            "suite=pachyderm"
+        ],
+        "annotations": [
+            "seccomp.security.alpha.kubernetes.io/pod: runtime/default"
+        ],
+        "status": "Running",
+        "ip": "10.8.2.24",
+        "ips": [
+            "IP:           10.8.2.24"
+        ],
+        "controlledBy": "ReplicaSet/cloudsql-auth-proxy-7d94b6dc74",
+        "containers": [
+            {
+                "name": "cloud-sql-proxy",
+                "containerId":"containerd://81d9b60ba9707890e468c4b3b4122f5509ff969b3470a7a76dd99dfd22e0ad75",
+                "image": "gcr.io/cloudsql-docker/gce-proxy:1.23.0",
+                "imageId":"gcr.io/cloudsql-docker/gce-proxy@sha256:c360979cfcd7cd4e0d0bca6331a8e52a502d6b5e930a3c0987829d6393660cbf",
+                "port": "5432/TCP",
+                "hostPort": "0/TCP",
+                "command": [
+                    "/cloud_sql_proxy",
+                    "-instances=helm-162401:us-west1:helm-pachyderm=tcp:0.0.0.0:5432",
+                    ],
+                "state": ["Running",
+                    "Started:      Wed, 05 Oct 2022 06:24:39 +0000"
+                ],
+                "ready": "True",
+                "restartCount": "0",
+                "requests": [
+                    "cpu:        500m",
+                    "memory:     500M",
+                ],
+                "environment": [
+                    "<none>"
+                ],
+                "mounts": [
+                    "/var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8smvl (ro)"
+                ]
+            }
+        ],
+        "conditions": [
+            "Type              Status",
+            "Initialized       True",
+            "Ready             True",
+            "ContainersReady   True",
+            "PodScheduled      True"
+        ],
+        "volumes": [
+            {
+                "name": "kube-api-access-8smvl",
+                "type": "Projected (a volume that contains injected data from multiple sources)",
+                "tokenExpirationSeconds": "3607",
+                "configMapName": "kube-root-ca.crt",
+                "configMapOptional": "<nil>",
+                "downwardApi": "true",
+            }
+        ],
+        "qoSClass": "Burstable",
+        "nodeSelectors": [
+            "<none>"
+        ],
+        "tolerations": [
+            "node.kubernetes.io/not-ready:NoExecute op=Exists for 300s",
+            "node.kubernetes.io/unreachable:NoExecute op=Exists for 300s"
+        ],
+        "events": [
+            "<none>"
+        ]
+}
