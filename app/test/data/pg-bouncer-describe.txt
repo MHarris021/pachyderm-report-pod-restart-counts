@@ -1,0 +1,86 @@
+Name:         pg-bouncer-9648d45f5-qngfn
+Namespace:    default
+Priority:     0
+Node:         gke-pach-w1b-pach-w1b-core-0a05ee21-9vpb/10.138.2.194
+Start Time:   Tue, 04 Oct 2022 00:23:43 +0000
+Labels:       app=pg-bouncer
+              pod-template-hash=9648d45f5
+              suite=pachyderm
+Annotations:  seccomp.security.alpha.kubernetes.io/pod: runtime/default
+Status:       Running
+IP:           10.8.2.21
+IPs:
+  IP:           10.8.2.21
+Controlled By:  ReplicaSet/pg-bouncer-9648d45f5
+Containers:
+  pg-bouncer:
+    Container ID:   containerd://a338167cb748c20b350c8d512fd10d5c286c1f6ce562f70f19b9a686187f409f
+    Image:          pachyderm/pgbouncer:1.16.1-debian-10-r82
+    Image ID:       docker.io/pachyderm/pgbouncer@sha256:5a27d258703625fe8cf29a820757707c3368e9cd1c003e77d7694bf6d874be14
+    Port:           5432/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Tue, 04 Oct 2022 00:23:44 +0000
+    Ready:          True
+    Restart Count:  0
+    Requests:
+      cpu:      1
+      memory:   2G
+    Liveness:   exec [/bin/sh -c PGPASSWORD=$POSTGRESQL_PASSWORD psql -U $POSTGRESQL_USERNAME -h 127.0.0.1 -p $PGBOUNCER_PORT -d $POSTGRESQL_DATABASE --tuples-only --command="SELECT 1;" | grep -q "1"] delay=0s timeout=1s period=30s #success=1 #failure=5
+    Readiness:  tcp-socket :5432 delay=0s timeout=1s period=10s #success=1 #failure=3
+    Environment:
+      POSTGRESQL_USERNAME:                  postgres
+      POSTGRESQL_DATABASE:                  pachyderm
+      PGBOUNCER_SET_USER:                   True
+      POSTGRESQL_HOST:                      cloudsql-auth-proxy.default.svc.cluster.local.
+      PGBOUNCER_PORT:                       5432
+      POSTGRESQL_PORT:                      5432
+      PGBOUNCER_DATABASE:                   *
+      PGBOUNCER_MAX_CLIENT_CONN:            10000
+      PGBOUNCER_DEFAULT_POOL_SIZE:          500
+      PGBOUNCER_POOL_MODE:                  transaction
+      PGBOUNCER_IDLE_TRANSACTION_TIMEOUT:   300
+      PGBOUNCER_IGNORE_STARTUP_PARAMETERS:  extra_float_digits
+      PGBOUNCER_SERVER_TLS_SSLMODE:         disable
+      PGBOUNCER_UNIX_SOCKET_DIR:             
+      POSTGRESQL_PASSWORD:                  <set to the key 'postgresql-password' in secret 'postgres'>  Optional: false
+    Mounts:
+      /opt/bitnami/pgbouncer/conf/ from config (rw)
+      /opt/bitnami/pgbouncer/logs/ from logs (rw)
+      /opt/bitnami/pgbouncer/tmp/ from pgtmp (rw)
+      /tmp from tmp (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-5tgbg (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  pgtmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  tmp:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  config:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  logs:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:     
+    SizeLimit:  <unset>
+  kube-api-access-5tgbg:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              cloud.google.com/gke-nodepool=pach-w1b-core
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

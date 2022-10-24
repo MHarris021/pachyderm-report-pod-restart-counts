@@ -2,8 +2,10 @@ export type Container = {
     id: string;
     image: string;
     imageId: string;
-    ports: string;
-    hostPorts: string;
+    ports?: string;
+    port?: string;
+    hostPorts?: string;
+    hostPort?: string;
     command: string[];
     args: string[];
     state: string[];

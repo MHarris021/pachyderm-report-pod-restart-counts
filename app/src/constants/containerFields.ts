@@ -6,7 +6,9 @@ export enum ContainerFields {
     image = "Image:",
     imageId = "Image ID:",
     ports = "Ports:",
+    port = "Port:",
     hostPorts = "Host Ports:",
+    hostPort = "Host Port:",
     command = "Command:",
     args = "Args:",
     state = "State:",
@@ -15,6 +17,7 @@ export enum ContainerFields {
     ready = "Ready:",
     requests = "Requests:",
     liveness = "Liveness:",
+    limits = "Limits:",
     readiness = "Readiness:",
     startup = "Startup:",
     environment = "Environment:",
@@ -44,8 +47,18 @@ export const containerFields: DescribeFields = [
         fieldType: DescribeFieldType.Value,
     },
     {
+      name:"port",
+        field: ContainerFields.port,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
         name: "hostPorts",
         field: ContainerFields.hostPorts,
+        fieldType: DescribeFieldType.Value,
+    },
+    {
+        name: "hostPort",
+        field: ContainerFields.hostPort,
         fieldType: DescribeFieldType.Value,
     },
     {
@@ -111,6 +124,11 @@ export const containerFields: DescribeFields = [
     {
         name: "requests",
         field: ContainerFields.requests,
+        fieldType: DescribeFieldType.Array,
+    },
+    {
+        name: "limits",
+        field: ContainerFields.limits,
         fieldType: DescribeFieldType.Array,
     }
     ];
