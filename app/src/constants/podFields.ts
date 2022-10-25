@@ -14,6 +14,7 @@ export enum PodFields {
     node = "Node:",
     priority = "Priority:",
     controlledBy = "Controlled By:",
+    readinessGates = "Readiness Gates:",
     conditions ="Conditions:",
     events = "Events:",
     containers = "Containers:",
@@ -93,6 +94,11 @@ export const podFields:DescribeFields = [
         name: "controlledBy",
         field: PodFields.controlledBy,
         fieldType: DescribeFieldType.Value,
+    },
+    {
+        name: "readinessGates",
+        field: PodFields.readinessGates,
+        fieldType: DescribeFieldType.Array,
     },
     {
         name: "conditions",

@@ -618,3 +618,163 @@ export const cloudSqlAuthProxyPod = {
             "<none>"
         ]
 }
+
+export const pachdWithRestartsPod = {
+    "name": "pachd-58f5bfbc84-wwqt6",
+    "namespace": "pachyderm",
+    "priority": "0",
+    "node": "gke-pachyderm-pachd-core-f1a7488b-ulpk/10.10.0.49",
+    "startTime": "Tue, 20 Sep 2022 21:55:25 +0000",
+    "labels": [
+        "app=pachd",
+        "pod-template-hash=58f5bfbc84",
+        "suite=pachyderm"
+    ],
+    "annotations": [
+        "checksum/helm-values: 11791c49193374772fe6a043c878b101a49720f6ad5ac56004163fb48f932ceb",
+        "checksum/storage-secret: 00f157d95b5831fb492c4f506413059a110b7b947316b4cf420977b94bb2ec6d",
+        "seccomp.security.alpha.kubernetes.io/pod: runtime/default"
+    ],
+    "status": "Running",
+    "ip": "10.20.2.139",
+    "ips": [
+        "IP:           10.20.2.139",
+        ],
+    "controlledBy": "ReplicaSet/pachd-58f5bfbc84",
+    "containers": [
+        {
+            "name": "pachd",
+            "containerId":"containerd://b5fac6840c8327ef549e9730a55426bbc0956a65ecd8f9bdb9bfeed21307f1ff",
+            "image": "pachyderm/pachd:2.3.2",
+            "imageId":"docker.io/pachyderm/pachd@sha256:daec872427ba909fe3acabb2fce1aa37e74ae5419957f7828db60f7a268f7497",
+            "ports": "1600/TCP, 1650/TCP, 1653/TCP, 1657/TCP, 1658/TCP, 1656/TCP",
+            "hostPorts": "0/TCP, 0/TCP, 0/TCP, 0/TCP, 0/TCP, 0/TCP",
+            "command": [
+                "/pachd",
+                ],
+            "args": [
+                "--mode",
+                "$(MODE)",
+                ],
+            "state": ["Running",
+                "Started:      Thu, 22 Sep 2022 10:23:15 +0000"
+                ],
+            "lastState": ["Terminated",
+                "Reason:       Error",
+                "Exit Code:    137",
+                "Started:      Thu, 22 Sep 2022 10:21:10 +0000",
+                "Finished:     Thu, 22 Sep 2022 10:23:15 +0000"
+                ],
+            "ready": "True",
+            "restartCount": "14",
+            "liveness":"exec [/pachd --readiness] delay=0s timeout=30s period=10s #success=1 #failure=10",
+            "readiness":"exec [/pachd --readiness] delay=0s timeout=1s period=10s #success=1 #failure=3",
+            "startup":"exec [/pachd --readiness] delay=0s timeout=30s period=10s #success=1 #failure=10",
+            "environmentVariablesFrom": [
+                "pachyderm-storage-secret        Secret     Optional: false",
+                "pachyderm-deployment-id-secret  Secret     Optional: false",
+                "pachd-config                    ConfigMap  Optional: true"
+            ],
+            "environment": [
+                "POSTGRES_HOST:                       cloudsql-auth-proxy.pachyderm.svc.cluster.local",
+                "POSTGRES_PORT:                       5432",
+                "POSTGRES_USER:                       pachyderm",
+                "POSTGRES_DATABASE:                   pachyderm",
+                "POSTGRES_PASSWORD:                   <set to the key 'PACHYDERM_DB_PASSWORD' in secret 'pachyderm'>  Optional: false",
+                "PG_BOUNCER_HOST:                     pg-bouncer",
+                "PG_BOUNCER_PORT:                     5432",
+                "LOKI_LOGGING:                        true",
+                "LOKI_SERVICE_HOST_VAR:               PACHYDERM_LOKI_SERVICE_HOST",
+                "LOKI_SERVICE_PORT_VAR:               PACHYDERM_LOKI_SERVICE_PORT",
+                "PACH_ROOT:                           /pach",
+                "ETCD_PREFIX:",
+                "STORAGE_BACKEND:                     GOOGLE",
+                "WORKER_IMAGE:                        pachyderm/worker:2.3.2",
+                "WORKER_SIDECAR_IMAGE:                pachyderm/pachd:2.3.2",
+                "WORKER_IMAGE_PULL_POLICY:            IfNotPresent",
+                "WORKER_SERVICE_ACCOUNT:              pachyderm-worker",
+                "METRICS:                             true",
+                "LOG_FORMAT:                          json",
+                "LOG_LEVEL:                           info",
+                "PACH_NAMESPACE:                      pachyderm (v1:metadata.namespace)",
+                "REQUIRE_CRITICAL_SERVERS_ONLY:       false",
+                "PACHD_POD_NAME:                      pachd-58f5bfbc84-wwqt6 (v1:metadata.name)",
+                "PPS_WORKER_GRPC_PORT:                1080",
+                "STORAGE_UPLOAD_CONCURRENCY_LIMIT:    100",
+                "STORAGE_PUT_FILE_CONCURRENCY_LIMIT:  100",
+                "LICENSE_KEY:                         <set to the key 'enterprise-license-key' in secret 'pachyderm'>               Optional: false",
+                "IDP_CONNECTORS:                      <set to the key 'upstream-idps' in secret 'pachyderm'>                        Optional: false",
+                "IDP_CONFIG:                          <set to the key 'identity-config' of config map 'pachyderm-identity-config'>  Optional: false",
+                "ENTERPRISE_SECRET:                   <set to the key 'enterprise-secret' in secret 'pachyderm'>                    Optional: false",
+                "ACTIVATE_AUTH:                       true",
+                "AUTH_ROOT_TOKEN:                     <set to the key 'root-token' in secret 'pachyderm'>                        Optional: false",
+                "AUTH_CONFIG:                         <set to the key 'auth-config' in secret 'pachyderm-auth'>                  Optional: false",
+                "AUTH_CLIENT_SECRET:                  <set to the key 'pachd-oauth-client-secret' in secret 'pachyderm-auth'>    Optional: false",
+                "IDP_CLIENTS:                         <set to the key 'oidc-clients' of config map 'pachyderm-identity-config'>  Optional: false",
+                "AUTH_CLUSTER_RBAC:                   <set to the key 'cluster-role-bindings' in secret 'pachyderm-auth'>        Optional: false",
+                "CONSOLE_OAUTH_ID:                    console",
+                "CONSOLE_OAUTH_SECRET:                <set to the key 'OAUTH_CLIENT_SECRET' in secret 'pachyderm-console-secret'>  Optional: false",
+                "ENABLE_WORKER_SECURITY_CONTEXTS:     true",
+                "ENABLE_PREFLIGHT_CHECKS:             true",
+                "UNPAUSED_MODE:                       full"
+                ],
+            "mounts": [
+                "/pach from pach-disk (rw)",
+                "/pachyderm-storage-secret from pachyderm-storage-secret (rw)",
+                "/tmp from tmp (rw)",
+                "/var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-f2vcs (ro)"
+                ],
+        }
+    ],
+    "readinessGates": [
+        "Type                                       Status",
+        "cloud.google.com/load-balancer-neg-ready   True"
+    ],
+    "conditions": [
+        "Type                                       Status",
+        "cloud.google.com/load-balancer-neg-ready   True",
+        "Initialized                                True",
+        "Ready                                      True",
+        "ContainersReady                            True",
+        "PodScheduled                               True"
+        ],
+    "volumes": [
+        {
+            "name":"tmp",
+            "type":"EmptyDir (a temporary directory that shares a pod's lifetime)",
+            "medium":"",
+            "sizeLimit":"<unset>"
+        },
+        {
+            "name":"pach-disk",
+            "type":"EmptyDir (a temporary directory that shares a pod's lifetime)",
+            "medium":"",
+            "sizeLimit":"<unset>"
+        },
+        {
+            "name":"pachyderm-storage-secret",
+            "type":"Secret (a volume populated by a Secret)",
+            "secretName":"pachyderm-storage-secret",
+            "optional":"false"
+        },
+        {
+            "name":"kube-api-access-f2vcs",
+            "type":"Projected (a volume that contains injected data from multiple sources)",
+            "tokenExpirationSeconds":"3607",
+            "configMapName":"kube-root-ca.crt",
+            "configMapOptional":"<nil>",
+            "downwardApi":"true",
+        }
+          ],
+    "qoSClass":"BestEffort",
+    "nodeSelectors": [
+        "<none>"
+    ],
+    "tolerations": [
+        "node.kubernetes.io/not-ready:NoExecute op=Exists for 300s",
+        "node.kubernetes.io/unreachable:NoExecute op=Exists for 300s"
+    ],
+    "events": [
+        "<none>"
+    ]
+}

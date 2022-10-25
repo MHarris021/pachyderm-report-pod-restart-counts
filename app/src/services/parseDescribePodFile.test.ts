@@ -6,7 +6,7 @@ import {
     consolePod,
     etcdPod,
     kubeEventTailPod,
-    pachdPod,
+    pachdPod, pachdWithRestartsPod,
     pgBouncerPod
 } from "../../test/fixtures/expectedPodValues";
 
@@ -18,6 +18,7 @@ const pgBouncerPodFile = path.join(testFilePath, "pg-bouncer-describe.txt");
 const kubeEventTailPodFile = path.join(testFilePath, "kube-event-tail-describe.txt");
 const consolePodFile = path.join(testFilePath, "console-describe.txt");
 const cloudSqlAuthProxyPodFile = path.join(testFilePath, "cloudsql-auth-proxy-describe.txt");
+const pachdWithRestartsPodFile = path.join(testFilePath, "pachd-with-restarts-describe.txt");
 
 describe("parseDescribePodFile", () => {
 
@@ -79,5 +80,15 @@ describe("parseDescribePodFile", () => {
         console.info("pod: ", JSON.stringify(pod));
         expect(podName).toEqual("cloudsql-auth-proxy-7d94b6dc74-lmqmm");
         expect(pod).toEqual(cloudSqlAuthProxyPod);
+    });
+
+    // test that parseDescribePodFile returns the correct pachd pod object and pod name for a valid describe pod file with restarts
+    test('parseDescribePodFile returns the correct pachd pod object and pod name for a valid describe pod file with restarts', async () => {
+        expect((await fsPromises.stat(pachdWithRestartsPodFile)).isFile()).toBe(true);
+        console.info("pachdWithRestartsPodFile: ", pachdWithRestartsPodFile);
+        const {pod, podName} = await parseDescribePodFile(pachdWithRestartsPodFile);
+        console.info("pod: ", JSON.stringify(pod));
+        expect(podName).toEqual("pachd-58f5bfbc84-wwqt6");
+        expect(pod).toEqual(pachdWithRestartsPod);
     });
 });
