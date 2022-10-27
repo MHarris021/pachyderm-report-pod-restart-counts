@@ -1,6 +1,3 @@
 import * as expectedPodValues from "./expectedPodValues";
 
-export {
-    expectedPodValues,
-}
-
+export { expectedPodValues };

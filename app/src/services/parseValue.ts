@@ -16,9 +16,15 @@ import camelCase from "lodash.camelcase";
 //     {key: string, value: string} - The key and value parsed from the line.
 //     If no match is found, the entire line will be used as the key.
 //     key will be camelCased.
-export function parseValue(line: string, separator:string|RegExp=':'): {key: string, value: string} {
-    const fields = line.split(separator);
-    const key = camelCase(fields[0].trim());
-    const value = fields.slice(1).join((typeof separator=="string")? separator:",").trim();
-    return {key, value};
+export function parseValue(
+  line: string,
+  separator: string | RegExp = ":"
+): { key: string; value: string } {
+  const fields = line.split(separator);
+  const key = camelCase(fields[0].trim());
+  const value = fields
+    .slice(1)
+    .join(typeof separator == "string" ? separator : ",")
+    .trim();
+  return { key, value };
 }
