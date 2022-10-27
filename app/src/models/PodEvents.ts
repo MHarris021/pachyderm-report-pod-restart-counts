@@ -2,6 +2,7 @@ export class PodEvents {
   get podEvents(): string[] {
     return this._podEvents;
   }
+
   private readonly _podEvents: string[];
 
   constructor(podEvents: string[]) {

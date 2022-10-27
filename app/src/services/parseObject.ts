@@ -1,17 +1,17 @@
-import { parseValue } from "./parseValue";
 import startsWith from "lodash.startswith";
 import { updateObject } from "./updateObject";
-import { DescribeFields, DescribeFieldType } from "../constants/types";
+import { DescribeFields } from "../constants/types";
 import isEmpty from "lodash.isempty";
 import { processField } from "./processField";
+import invariant from "tiny-invariant";
 
-export type ParseObjectParams = {
+export interface ParseObjectParams {
   lines: string[];
   fields: DescribeFields;
   currentLine: number;
   position?: number;
   objectName?: string;
-};
+}
 
 export function parseObject(params: ParseObjectParams): {
   obj: object;
@@ -19,9 +19,10 @@ export function parseObject(params: ParseObjectParams): {
 } {
   const { lines, fields, currentLine, position, objectName } = params;
   let o: object = {};
-  let currentPosition = position || 1;
-  let currentLine1 = currentLine;
-  if (objectName) {
+  const currentPosition = position ?? 1;
+  let currentLine1 = currentLine ?? 0;
+  if (!isEmpty(objectName)) {
+    invariant(objectName, "Object name is required");
     o = updateObject(o, "name", objectName);
     currentLine1++;
   }

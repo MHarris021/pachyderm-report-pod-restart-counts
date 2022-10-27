@@ -3,7 +3,11 @@ import { processField } from "./processField";
 import { Pod } from "../models/types";
 import isEmpty from "lodash.isempty";
 
-function processLines(currentLine: number, lines: string[], pod: Pod) {
+function processLines(
+  currentLine: number,
+  lines: string[],
+  pod: Pod
+): { currentLine: number; pod: Pod } {
   while (currentLine < lines.length) {
     const startLine = currentLine;
     podFields.forEach((field) => {

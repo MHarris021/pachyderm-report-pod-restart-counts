@@ -1,5 +1,5 @@
 import { parseObjects } from "./parseObjects";
-import { DescribeFields, DescribeFieldType } from "../constants/types";
+import { DescribeFieldType } from "../constants/types";
 import { volumeFields } from "../constants/volumeFields";
 import { containerFields } from "../constants/containerFields";
 
@@ -43,7 +43,7 @@ const containersLines = [
   "      /bin/sh",
   "      -c",
   "    Args:",
-  '      "/usr/local/bin/etcd" "--listen-client-urls=http://0.0.0.0:2379" "--advertise-client-urls=http://0.0.0.0:2379" "--data-dir=/var/data/etcd" "--auto-compaction-retention=1" "--max-txn-ops=10000" "--max-request-bytes=52428800" "--quota-backend-bytes=8589934592" "--listen-peer-urls=http://0.0.0.0:2380" "--initial-cluster-token=pach-cluster" "--initial-advertise-peer-urls=http://${ETCD_NAME}.etcd-headless.${NAMESPACE}.svc.cluster.local:2380" "--initial-cluster=etcd-0=http://etcd-0.etcd-headless.${NAMESPACE}.svc.cluster.local:2380,"',
+  "      /usr/local/bin/etcd  --listen-client-urls=http://0.0.0.0:2379  --advertise-client-urls=http://0.0.0.0:2379  --data-dir=/var/data/etcd  --auto-compaction-retention=1  --max-txn-ops=10000  --max-request-bytes=52428800  --quota-backend-bytes=8589934592  --listen-peer-urls=http://0.0.0.0:2380  --initial-cluster-token=pach-cluster  --initial-advertise-peer-urls=http://${ETCD_NAME}.etcd-headless.${NAMESPACE}.svc.cluster.local:2380  --initial-cluster=etcd-0=http://etcd-0.etcd-headless.${NAMESPACE}.svc.cluster.local:2380",
   "    State:          Running",
   "      Started:      Wed, 05 Oct 2022 17:08:35 +0000",
   "    Last State:     Terminated",
@@ -112,7 +112,7 @@ describe("parseObjects", () => {
         hostPorts: "0/TCP, 0/TCP",
         command: ["/bin/sh", "-c"],
         args: [
-          '"/usr/local/bin/etcd" "--listen-client-urls=http://0.0.0.0:2379" "--advertise-client-urls=http://0.0.0.0:2379" "--data-dir=/var/data/etcd" "--auto-compaction-retention=1" "--max-txn-ops=10000" "--max-request-bytes=52428800" "--quota-backend-bytes=8589934592" "--listen-peer-urls=http://0.0.0.0:2380" "--initial-cluster-token=pach-cluster" "--initial-advertise-peer-urls=http://${ETCD_NAME}.etcd-headless.${NAMESPACE}.svc.cluster.local:2380" "--initial-cluster=etcd-0=http://etcd-0.etcd-headless.${NAMESPACE}.svc.cluster.local:2380,"',
+          "/usr/local/bin/etcd  --listen-client-urls=http://0.0.0.0:2379  --advertise-client-urls=http://0.0.0.0:2379  --data-dir=/var/data/etcd  --auto-compaction-retention=1  --max-txn-ops=10000  --max-request-bytes=52428800  --quota-backend-bytes=8589934592  --listen-peer-urls=http://0.0.0.0:2380  --initial-cluster-token=pach-cluster  --initial-advertise-peer-urls=http://${ETCD_NAME}.etcd-headless.${NAMESPACE}.svc.cluster.local:2380  --initial-cluster=etcd-0=http://etcd-0.etcd-headless.${NAMESPACE}.svc.cluster.local:2380",
         ],
         state: ["Running", "Started:      Wed, 05 Oct 2022 17:08:35 +0000"],
         lastState: [

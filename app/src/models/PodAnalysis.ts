@@ -6,14 +6,17 @@ export class PodAnalysis {
   get podInfo(): PodInfo {
     return this._podInfo;
   }
+
   private readonly _podInfo: PodInfo;
   get podEvents(): PodEvents {
     return this._podEvents;
   }
+
   private readonly _podEvents: PodEvents;
   get podConditions(): PodConditions {
     return this._podConditions;
   }
+
   private readonly _podConditions: PodConditions;
 
   constructor(

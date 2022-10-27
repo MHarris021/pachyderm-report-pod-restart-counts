@@ -24,7 +24,7 @@ export function parseValue(
   const key = camelCase(fields[0].trim());
   const value = fields
     .slice(1)
-    .join(typeof separator == "string" ? separator : ",")
+    .join(typeof separator === "string" ? separator : ",")
     .trim();
   return { key, value };
 }

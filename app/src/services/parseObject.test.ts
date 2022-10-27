@@ -126,7 +126,7 @@ describe("parseObject", () => {
   // it should return an object with the correct keys and values when given an array of strings
   it("should return an object with the correct keys and values when given an array of strings", () => {
     const lines = ["test:", "  value1: 1", "  value2: 2", "  value3: 3"];
-    const { obj, endLine } = parseObject({
+    const { obj } = parseObject({
       lines,
       currentLine: 0,
       fields,
@@ -143,7 +143,7 @@ describe("parseObject", () => {
   // it should return the correct endLine when given an array of strings
   it("should return the correct endLine when given an array of strings", () => {
     const lines = ["   value1: 1", "   value2: 2", "   value3: 3"];
-    const { obj, endLine } = parseObject({
+    const { endLine } = parseObject({
       lines,
       currentLine: 0,
       fields,

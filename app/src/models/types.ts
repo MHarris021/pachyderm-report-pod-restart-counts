@@ -1,4 +1,4 @@
-export type Container = {
+export interface Container {
   id: string;
   image: string;
   imageId: string;
@@ -14,9 +14,9 @@ export type Container = {
   ready: string;
   liveness: string;
   requests: string;
-};
+}
 
-export type Volume = {
+export interface Volume {
   name: string;
   hostPath?: string;
   mountPath?: string;
@@ -28,9 +28,9 @@ export type Volume = {
   configMapOptional?: string;
   downwardAPI?: string;
   optional?: string;
-};
+}
 
-export type Pod = {
+export interface Pod {
   name?: string;
   namespace?: string;
   status?: string;
@@ -50,4 +50,4 @@ export type Pod = {
   events?: string[];
   conditions?: string[];
   qoSClass?: string;
-};
+}

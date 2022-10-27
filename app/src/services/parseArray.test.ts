@@ -16,7 +16,7 @@ describe("parseArray", () => {
       "  9",
       "  10",
     ];
-    const { array, endLine } = parseArray({ lines, currentLine: 0 });
+    const { array } = parseArray({ lines, currentLine: 0 });
     expect(array).toEqual(["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]);
   });
 
@@ -35,7 +35,7 @@ describe("parseArray", () => {
       "  9",
       "  10",
     ];
-    const { array, endLine } = parseArray({ lines, currentLine: 0 });
+    const { endLine } = parseArray({ lines, currentLine: 0 });
     expect(endLine).toEqual(11);
   });
 

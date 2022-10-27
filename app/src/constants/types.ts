@@ -1,15 +1,11 @@
-export type DescribeValue = {
-  value: string;
-};
-
-export type DescribeField = {
+export interface DescribeField {
   name: string;
   field: string;
   fieldType: DescribeFieldType;
   subFields?: DescribeFields;
   description?: string;
   required?: boolean;
-};
+}
 
 export enum DescribeFieldType {
   Value = "value",
@@ -17,13 +13,5 @@ export enum DescribeFieldType {
   Object = "object",
   ObjectArray = "objectArray",
 }
-
-export type DescribeObject = {
-  obj: Map<String, DescribeField>;
-};
-
-export type DescribeArray = {
-  array: Array<DescribeField>;
-};
 
 export type DescribeFields = DescribeField[];

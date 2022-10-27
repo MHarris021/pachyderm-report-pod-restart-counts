@@ -6,14 +6,15 @@ import { parseObjects } from "./parseObjects";
 import { parseArray } from "./parseArray";
 import invariant from "tiny-invariant";
 import { parseObject } from "./parseObject";
+import isEmpty from "lodash.isempty";
 
-export type ProcessFieldParams = {
+export interface ProcessFieldParams {
   lines: string[];
   field: DescribeField;
   currentLine: number;
   position?: number;
   objectName?: string;
-};
+}
 
 export function processField(params: ProcessFieldParams): {
   obj: object;
@@ -24,10 +25,11 @@ export function processField(params: ProcessFieldParams): {
     `Processing field [${field.name}] at line ${currentLine} with value ${lines[currentLine]}`
   );
   let obj: object = {};
-  if (objectName) {
+  if (!isEmpty(objectName)) {
+    invariant(objectName, "Object name is required");
     obj = updateObject(obj, "name", objectName);
   }
-  let currentPosition = position || 0;
+  const currentPosition = position ?? 0;
   let currentLine1 = currentLine;
   const line = lines[currentLine1]?.trim();
   if (startsWith(line, field.field)) {

@@ -1,26 +1,30 @@
-export type PodConditionsProps = {
+export interface PodConditionsProps {
   initialized: boolean;
   ready: boolean;
   containersReady: boolean;
   podScheduled: boolean;
-};
+}
 
 export class PodConditions {
   get podScheduled(): boolean {
     return this._podScheduled;
   }
+
   private readonly _podScheduled: boolean;
   get containersReady(): boolean {
     return this._containersReady;
   }
+
   private readonly _containersReady: boolean;
   get ready(): boolean {
     return this._ready;
   }
+
   private readonly _ready: boolean;
   get initialized(): boolean {
     return this._initialized;
   }
+
   private readonly _initialized: boolean;
 
   constructor(podConditionsProps: PodConditionsProps) {

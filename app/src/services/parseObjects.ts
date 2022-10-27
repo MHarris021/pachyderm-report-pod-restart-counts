@@ -3,18 +3,18 @@ import invariant from "tiny-invariant";
 import startsWith from "lodash.startswith";
 import { parseObject } from "./parseObject";
 
-export type ParseObjectsParams = {
+export interface ParseObjectsParams {
   lines: string[];
   field: DescribeField;
   currentLine: number;
   position?: number;
-};
+}
 
-export type ParseObjectsResult = {
+export interface ParseObjectsResult {
   objectArray: object[];
   objectArrayKey: string;
   endLine: number;
-};
+}
 
 export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
   const { lines, field, currentLine, position } = params;
@@ -23,10 +23,10 @@ export function parseObjects(params: ParseObjectsParams): ParseObjectsResult {
     "Field type must be objectArray"
   );
   invariant(field.subFields, "Subfields are required for objectArray");
-  let objectArray: object[] = [];
+  const objectArray: object[] = [];
   const objectArrayKey = field.name;
   let currentLine1 = currentLine + 1;
-  let currentPosition = position || 1;
+  const currentPosition = position ?? 1;
   const subFields = field.subFields;
   while (
     currentLine1 < lines.length &&

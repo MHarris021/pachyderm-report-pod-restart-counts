@@ -1,5 +1,4 @@
 import { DescribeFields, DescribeFieldType } from "./types";
-import { stateFields } from "./stateFields";
 
 export enum ContainerFields {
   id = "Container ID:",

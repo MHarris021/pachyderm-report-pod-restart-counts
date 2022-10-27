@@ -1,7 +1,6 @@
 import { readFile } from "fs/promises";
 import { podFields } from "../constants/podFields";
 
-import { parseObject } from "./parseObject";
 import { processField } from "./processField";
 import isEmpty from "lodash.isempty";
 import invariant from "tiny-invariant";
@@ -34,6 +33,6 @@ export async function parseDescribePodFile(filePath: string): Promise<any> {
   invariant(pod, "Pod is required");
   console.info(`Parsed pod: ${JSON.stringify(pod)}`);
   invariant(pod.name, "Pod name is required");
-  const podName = pod["name"];
+  const podName = pod.name;
   return { pod, podName };
 }
